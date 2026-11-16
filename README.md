@@ -6,3 +6,5 @@ Strona repozytorium zawsze dotyczy najbardziej bieżących zajęć.
 
 ## Pliki .ipynb
 Pliki z notatnikami, które mogą pobrać uczniowie by pracować samodzielnie.
+
+* RRZ_lab - zajęcia "Równania różniczkowe dla myślących laików"
