@@ -1,0 +1,395 @@
+/* =====================================================================
+   RRZ dla laików – arkusz stylów notatników Jupyter
+   ---------------------------------------------------------------------
+   Działa w: JupyterLab 3/4, Jupyter Notebook 7, klasycznym Notebook 6.
+   Notatnik dołącza ten plik w pierwszej komórce kodu (STYL_URL).
+   Umieść plik na serwerze dostępnym przez HTTPS (jeśli Jupyter działa
+   przez HTTPS, przeglądarka zablokuje arkusz z adresu http://).
+   Wszystkie klasy mają przedrostek "rrz-", więc nie kolidują z Jupyterem.
+   ===================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+
+/* ---------- paleta (jasny motyw) ---------- */
+:root {
+  --rrz-granat: #1d3557;
+  --rrz-granat-jasny: #457b9d;
+  --rrz-morski: #2a9d8f;
+  --rrz-pomarancz: #e76f51;
+  --rrz-piasek: #f4a261;
+  --rrz-zloty: #e9c46a;
+  --rrz-fiolet: #6d597a;
+  --rrz-tekst: #22303f;
+  --rrz-tekst-slaby: #5b6b7c;
+  --rrz-tlo-karty: #ffffff;
+  --rrz-tlo-zadanie: #fff4ec;
+  --rrz-tlo-pytanie: #eef5fb;
+  --rrz-tlo-odpowiedz: #eaf6f3;
+  --rrz-tlo-wniosek: #fdf6e3;
+  --rrz-tlo-nauczyciel: #f4f0f7;
+  --rrz-tlo-grafika: #f7f9fb;
+  --rrz-cien: 0 2px 10px rgba(29, 53, 87, 0.08);
+  --rrz-promien: 12px;
+  --rrz-font-tekst: "Source Sans 3", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --rrz-font-naglowki: "Lexend", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- motyw ciemny JupyterLab ---------- */
+body[data-jp-theme-light="false"] {
+  --rrz-granat: #a8c5e6;
+  --rrz-granat-jasny: #8fb8d8;
+  --rrz-morski: #5cc8b9;
+  --rrz-pomarancz: #f08e74;
+  --rrz-piasek: #f4b47f;
+  --rrz-zloty: #f0d38a;
+  --rrz-fiolet: #c3a9d6;
+  --rrz-tekst: #e3e8ee;
+  --rrz-tekst-slaby: #a5b1be;
+  --rrz-tlo-karty: #1f2933;
+  --rrz-tlo-zadanie: #33261f;
+  --rrz-tlo-pytanie: #1d2b3a;
+  --rrz-tlo-odpowiedz: #1b2f2b;
+  --rrz-tlo-wniosek: #322d1c;
+  --rrz-tlo-nauczyciel: #2a2431;
+  --rrz-tlo-grafika: #222c36;
+  --rrz-cien: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- tekst komórek markdown ---------- */
+.jp-RenderedMarkdown,
+.text_cell_render {
+  font-family: var(--rrz-font-tekst);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--rrz-tekst);
+}
+
+.jp-RenderedMarkdown p,
+.text_cell_render p { margin: 0.5em 0 0.7em; }
+
+.jp-RenderedMarkdown strong,
+.text_cell_render strong { color: var(--rrz-granat); }
+
+.jp-RenderedMarkdown code,
+.text_cell_render code {
+  background: rgba(42, 157, 143, 0.12);
+  color: inherit;
+  padding: 0.1em 0.35em;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+/* nagłówki sekcji */
+.jp-RenderedMarkdown h2,
+.text_cell_render h2 {
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 700;
+  font-size: 1.75em;
+  color: var(--rrz-granat);
+  margin: 1.6em 0 0.6em;
+  padding: 0 0 0.35em;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(90deg, var(--rrz-morski), var(--rrz-piasek), transparent 85%) 1;
+}
+
+.jp-RenderedMarkdown h3,
+.text_cell_render h3 {
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 600;
+  font-size: 1.3em;
+  color: var(--rrz-morski);
+  margin: 1.3em 0 0.5em;
+  padding-left: 0.6em;
+  border-left: 5px solid var(--rrz-piasek);
+}
+
+.jp-RenderedMarkdown h4,
+.text_cell_render h4 {
+  font-family: var(--rrz-font-naglowki);
+  color: var(--rrz-granat-jasny);
+}
+
+/* ukrycie znaczka ¶ przy nagłówkach w JupyterLab */
+.jp-RenderedMarkdown .jp-InternalAnchorLink { opacity: 0.25; }
+
+.jp-RenderedMarkdown ul li::marker,
+.text_cell_render ul li::marker { color: var(--rrz-morski); }
+
+/* tabele */
+.jp-RenderedMarkdown table,
+.text_cell_render table {
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--rrz-cien);
+  margin: 0.8em 0;
+}
+.jp-RenderedMarkdown th,
+.text_cell_render th {
+  background: var(--rrz-granat) !important;
+  color: #fff !important;
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 500;
+}
+body[data-jp-theme-light="false"] .jp-RenderedMarkdown th { color: #14202c !important; }
+
+/* ---------- baner tytułowy ---------- */
+.rrz-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding: 34px 38px;
+  border-radius: 18px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(244, 162, 97, 0.45), transparent 45%),
+    radial-gradient(circle at 10% 110%, rgba(42, 157, 143, 0.55), transparent 50%),
+    linear-gradient(135deg, #1d3557 0%, #264d73 60%, #2a6f7f 100%);
+  box-shadow: 0 8px 28px rgba(29, 53, 87, 0.25);
+  margin: 6px 0 18px;
+}
+.rrz-hero-tekst { flex: 1 1 320px; }
+.rrz-hero .jp-InternalAnchorLink { display: none; }
+.rrz-hero-nadtytul {
+  font-family: var(--rrz-font-naglowki);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.8em;
+  color: var(--rrz-zloty);
+  opacity: 0.95;
+}
+.jp-RenderedMarkdown .rrz-hero h1,
+.text_cell_render .rrz-hero h1,
+.rrz-hero h1 {
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 700;
+  font-size: 2.6em;
+  line-height: 1.1;
+  margin: 0.2em 0 0.15em;
+  color: #fff;
+  border: none;
+}
+.rrz-hero-podtytul {
+  font-family: var(--rrz-font-naglowki);
+  font-size: 1.25em;
+  color: #dbe7f3;
+}
+.rrz-hero-obraz,
+.rrz-hero .rrz-grafika-miejsce {
+  flex: 1 1 280px;
+  max-width: 440px;
+  border-radius: 14px;
+}
+.rrz-hero img.rrz-hero-obraz,
+.jp-RenderedHTMLCommon .rrz-hero img.rrz-hero-obraz {
+  width: 100%;
+  max-width: 440px;
+  min-width: 240px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+.rrz-chipy { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.rrz-chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-size: 0.85em;
+  color: #fff;
+}
+
+/* ---------- plan lekcji ---------- */
+.rrz-plan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0 8px;
+}
+.rrz-plan-krok {
+  flex: 1 1 110px;
+  background: var(--rrz-tlo-karty);
+  border-radius: var(--rrz-promien);
+  box-shadow: var(--rrz-cien);
+  padding: 12px 14px;
+  border-top: 5px solid var(--rrz-morski);
+}
+.rrz-plan-krok:nth-child(2) { border-top-color: var(--rrz-granat-jasny); }
+.rrz-plan-krok:nth-child(3) { border-top-color: var(--rrz-piasek); }
+.rrz-plan-krok:nth-child(4) { border-top-color: var(--rrz-pomarancz); }
+.rrz-plan-krok:nth-child(5) { border-top-color: var(--rrz-fiolet); }
+.rrz-plan-nr {
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 700;
+  font-size: 1.6em;
+  color: var(--rrz-granat);
+  line-height: 1;
+}
+.rrz-plan-nazwa { display: block; font-weight: 600; margin-top: 4px; }
+.rrz-plan-czas { display: block; color: var(--rrz-tekst-slaby); font-size: 0.85em; }
+
+/* ---------- ramki: zadanie, pytanie, odpowiedź, wniosek, nauczyciel ---------- */
+.rrz-box {
+  position: relative;
+  margin: 14px 0;
+  padding: 12px 18px 10px 20px;
+  border-radius: var(--rrz-promien);
+  border-left: 6px solid var(--rrz-granat);
+  box-shadow: var(--rrz-cien);
+  background: var(--rrz-tlo-karty);
+}
+.rrz-box > p:last-child { margin-bottom: 0.3em; }
+.rrz-box-tytul {
+  font-family: var(--rrz-font-naglowki);
+  font-weight: 600;
+  font-size: 0.82em;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+.rrz-box-tytul::before { margin-right: 8px; font-size: 1.15em; }
+
+.rrz-zadanie { background: var(--rrz-tlo-zadanie); border-left-color: var(--rrz-pomarancz); }
+.rrz-zadanie .rrz-box-tytul { color: var(--rrz-pomarancz); }
+.rrz-zadanie .rrz-box-tytul::before { content: "\270E"; }          /* ✎ */
+
+.rrz-pytanie { background: var(--rrz-tlo-pytanie); border-left-color: var(--rrz-granat-jasny); }
+.rrz-pytanie .rrz-box-tytul { color: var(--rrz-granat-jasny); }
+.rrz-pytanie .rrz-box-tytul::before { content: "?"; font-weight: 700; }
+
+.rrz-odpowiedz {
+  background: var(--rrz-tlo-odpowiedz);
+  border-left-color: var(--rrz-morski);
+  box-shadow: none;
+}
+.rrz-odpowiedz .rrz-box-tytul { color: var(--rrz-morski); }
+.rrz-odpowiedz .rrz-box-tytul::before { content: "\2713"; }         /* ✓ */
+
+.rrz-wniosek { background: var(--rrz-tlo-wniosek); border-left-color: var(--rrz-zloty); }
+.rrz-wniosek .rrz-box-tytul { color: #b8860b; }
+body[data-jp-theme-light="false"] .rrz-wniosek .rrz-box-tytul { color: var(--rrz-zloty); }
+.rrz-wniosek .rrz-box-tytul::before { content: "\2605"; }           /* ★ */
+
+.rrz-zgadnij { background: var(--rrz-tlo-pytanie); border-left-color: var(--rrz-fiolet); }
+.rrz-zgadnij .rrz-box-tytul { color: var(--rrz-fiolet); }
+.rrz-zgadnij .rrz-box-tytul::before { content: "\2726"; }           /* ✦ */
+
+.rrz-nauczyciel {
+  background: var(--rrz-tlo-nauczyciel);
+  border: 2px dashed var(--rrz-fiolet);
+  border-left: 6px solid var(--rrz-fiolet);
+  box-shadow: none;
+  font-size: 0.93em;
+}
+.rrz-nauczyciel .rrz-box-tytul { color: var(--rrz-fiolet); }
+.rrz-nauczyciel .rrz-box-tytul::before { content: "\2691"; }        /* ⚑ */
+
+/* wyróżniony wzór */
+.rrz-wzor {
+  margin: 14px auto;
+  padding: 6px 18px;
+  max-width: 640px;
+  text-align: center;
+  border-radius: var(--rrz-promien);
+  background: var(--rrz-tlo-karty);
+  border: 2px solid var(--rrz-morski);
+  box-shadow: var(--rrz-cien);
+}
+.rrz-wzor-podpis {
+  font-family: var(--rrz-font-naglowki);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rrz-morski);
+}
+
+/* cykl modelowania */
+.rrz-cykl {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 16px 0;
+}
+.rrz-cykl-krok {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--rrz-granat);
+  color: #fff;
+  font-family: var(--rrz-font-naglowki);
+  font-size: 0.9em;
+}
+body[data-jp-theme-light="false"] .rrz-cykl-krok { color: #14202c; }
+.rrz-cykl-krok:nth-child(4n+3) { background: var(--rrz-morski); }
+.rrz-cykl-strzalka { color: var(--rrz-piasek); font-weight: 700; font-size: 1.3em; }
+
+/* cytat */
+.rrz-cytat {
+  margin: 18px auto;
+  max-width: 620px;
+  text-align: center;
+  font-family: var(--rrz-font-naglowki);
+  font-size: 1.2em;
+  color: var(--rrz-granat);
+}
+.rrz-cytat-autor {
+  display: block;
+  margin-top: 4px;
+  font-family: var(--rrz-font-tekst);
+  font-size: 0.75em;
+  color: var(--rrz-tekst-slaby);
+}
+
+/* ---------- grafiki ---------- */
+.rrz-grafika-miejsce {
+  margin: 14px 0;
+  padding: 18px 20px;
+  border-radius: var(--rrz-promien);
+  border: 2px dashed var(--rrz-granat-jasny);
+  background:
+    repeating-linear-gradient(45deg, transparent 0 12px, rgba(69, 123, 157, 0.06) 12px 24px),
+    var(--rrz-tlo-grafika);
+  color: var(--rrz-tekst-slaby);
+  text-align: center;
+  font-size: 0.92em;
+}
+.rrz-grafika-miejsce strong { color: var(--rrz-granat-jasny); }
+.rrz-hero .rrz-grafika-miejsce {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+  color: #dbe7f3;
+}
+.rrz-hero .rrz-grafika-miejsce strong { color: #fff; }
+
+.rrz-figura {
+  margin: 16px auto;
+  text-align: center;
+  max-width: 820px;
+}
+.rrz-figura img {
+  max-width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(29, 53, 87, 0.18);
+}
+.rrz-figura-waska { max-width: 520px; }
+.rrz-figura figcaption,
+.rrz-figura-podpis {
+  margin-top: 8px;
+  font-size: 0.88em;
+  font-style: italic;
+  color: var(--rrz-tekst-slaby);
+}
+
+/* ---------- stopka ---------- */
+.rrz-stopka {
+  margin: 26px 0 10px;
+  padding: 22px 26px;
+  border-radius: 16px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #2a6f7f, #1d3557);
+  font-family: var(--rrz-font-naglowki);
+}
+.rrz-stopka-duzy { font-size: 1.35em; font-weight: 600; }
+.rrz-stopka-maly { font-size: 0.95em; color: #dbe7f3; margin-top: 4px; }
